@@ -9,7 +9,7 @@
 - 각자 origin repository를 fork한다.
 - 각 주차별 담당자는 `Chapter0n.md` 파일에 학습한 내용을 정리한 뒤, 매 주 **월요일까지** PR을 보낸다.
 - **화요일 스터디 모임 이전까지** 다른 스터디원들은 PR 내용을 전부 확인하고 Comment를 남긴다.
-- 화요일 스터디 모임에서 해당 주차에 공부한 내용에 관해 토론하고 부족한 내용을 보충하여 최종 PR을 merge한다.
+- 화요일 스터디 모임에서 회의를 진행하고 부족한 내용을 보충하여 최종 PR을 merge한다.
 - 내용 정리 순서: [신진영](https://github.com/Jjinyshin) ➡️ [이주은](https://github.com/lizuAg) ➡️ [하고은](https://github.com/hagoeun0119)
 
 
