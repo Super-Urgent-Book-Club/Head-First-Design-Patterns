@@ -12,6 +12,7 @@
 - 화요일 스터디 모임에서 해당 주차에 공부한 내용에 관해 토론하고 부족한 내용을 보충하여 최종 PR을 merge한다.
 - 내용 정리 순서: [신진영](https://github.com/Jjinyshin) ➡️ [이주은](https://github.com/lizuAg) ➡️ [하고은](https://github.com/hagoeun0119)
 
+<br/>
 
 
 ## 📕 헤드퍼스트 디자인패턴
