@@ -1,5 +1,4 @@
 # 02장 | 객체들에게 연락 돌리기 옵저버 패턴
-<br/>
  
 ## 옵저버 패턴(Observer Pattern)의 정의
 
@@ -47,3 +46,91 @@
   - 값이 변했다는 알림을 옵저버가 받았을 때, 주제에 있는 게터 메소드를 호출해서 필요한 값을 당겨온다.
 
 - 대체로 옵저버가 필요한 데이터를 골라서 가져가도록 만드는 방법이 더 좋다.
+
+<details>
+  <summary><h2>옵저버 패턴 코드 보기</h2></summary>
+  <div markdown="1">
+   
+- Subject code
+   
+```
+public interface Subject {
+    void registerObserver(Observer o);
+    void removeObserver(Observer o);
+    void notifyObservers();
+}
+
+public class WeatherData implements Subject{
+    private List<Observer> observers;
+    private float temperature;
+    private float humidity;
+    private float pressure;
+
+    public WeatherData() {
+        this.observers = new ArrayList<>();
+    }
+
+    @Override
+    public void registerObserver(Observer o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        observers.remove(o);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer: observers) {
+            observer.update(temperature,humidity,pressure);
+        }
+    }
+
+    public void measurementsChanged() {
+        notifyObservers();
+    }
+
+    public void setMeasurements(float temperature, float humidity, float pressure) {
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.pressure = pressure;
+        measurementsChanged();
+    }
+}
+```
+
+- Observer code
+  
+```
+public interface Observer {
+    void update(float temp, float humidity, float pressure);
+}
+
+public class ConditionDisplay implements Observer, DisplayElement{
+    private float humidity;
+    private float temperature;
+
+    private WeatherData weatherData;
+
+    public ConditionDisplay(WeatherData weatherData) {
+        this.weatherData = weatherData;
+        weatherData.registerObserver(this);
+    }
+
+    @Override
+    public void display() {
+        System.out.println("now temp: " + temperature + ", 습도: " + humidity);
+    }
+
+    @Override
+    public void update(float temp, float humidity, float pressure) {
+        this.temperature = temp;
+        this.humidity = humidity;
+        display();
+    }
+}
+```
+
+  </div>
+</details>
