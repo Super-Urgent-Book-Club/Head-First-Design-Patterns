@@ -43,6 +43,7 @@
 - 동기화가 필요한 시점은 메소드가 시작되는 때 뿐이다.
 - 불필요한 오버헤드가 있으므로, 속도가 중요하지 않다면 사용한다.
 <br/>
+
 ### 2. 생성할 때 인스턴스를 만드는 방법
 
     public class Singleton { 
@@ -57,7 +58,8 @@
 - JVM에서 SingleTon의 하나뿐인 인스턴스를 생성해준다. JVM에서 인스턴스를 생성하기 전까지 어떤 스레드도 uniqueInstance에 접근할 수 없다.
 - 게으른 인스턴스 생성(lazyinstantiation)를 할 수 없습니다. 인스턴스가 항상 필요하다는 전제가 있다면, 사용할 수 있습니다.
 <br/>
-## 3. DCL을 사용해서 동기화 되는 부분을 줄인다.
+
+### 3. DCL을 사용해서 동기화 되는 부분을 줄인다.
 
     public class Singleton { 
 	    private volatile static Singleton uniqueInstance;
@@ -77,6 +79,7 @@
 - 처음에만 동기화가 진행된다.
 - 속도가 그리 중요하지 않은 상황이라면 굳이 DCL을 쓸 필요는 없다.
 <br/>
+
 ### +. enum으로 싱글턴을 생성한다.
 
     public enum Sigleton {
