@@ -9,6 +9,29 @@
 - 어디서든 그 인스턴스에 접근할 수 있도록 전역 접근 지점을 제공해야 한다.
 - 언제든 그 인스턴스가 필요하면 클래스에 요청할 수 있게 만들어 놓고, 요청이 들어오면 그 하나뿐인 인스턴스를 건네주도록 만든다.
 
+```
+  // 추상 클래스로 선언되므로 실제 연산을 구현해 주는 서브 클래스를 만들어야 한다.
+  abstract class AbstractClass {
+
+  final void templateMethod() {
+    primitiveOperation1();
+    primitiveOperation2();
+    concreteOperation();
+    hook();
+ }
+  //concrete 클래스에서 구현해야 한다.
+  abstract void primitiveOperation1();
+ 
+  abstract void primitiveOperation2();
+
+  //final로 선언되었으므로, 서브 클래스에서 오버라이드 할 수 없다. 추상 클래스 내에서 정의된다.
+  final void concreteOperation() {
+   // implementation here
+ }
+ void hook() {}
+}
+```
+
 
 ## 템플릿 메소드 패턴의 장점
 -   중복을 줄이고, 코드의 재사용성을 확보할 수 있습니다.
@@ -17,7 +40,7 @@
 -   상위 클래스의 메서드만 보더라도 전체 동작을 이해하기 쉽습니다.
 
 ## 템플릿 메소드 속 후크 알아보기
-> **후크(hook)**는 추상 클래스에서 선언되지만 기본적인 내용만 구현되어 있거나 아무 코드도 들어가 있지 않은 메소드입니다.
+> **후크(hook)** 는 추상 클래스에서 선언되지만 기본적인 내용만 구현되어 있거나 아무 코드도 들어가 있지 않은 메소드입니다.
 - 후크를 사용하려면 서브클래스에서 후크를 `override`해야 한다.
 - `override`하지 않으면 추상 클래스에서 기본으로 제공된 코드가 실행된다.
 
@@ -31,5 +54,8 @@
 ## 할리우드 원칙과 템플릿 메소드 패턴
 > **할리우드 원칙**
 > " 먼저 연락하지 마세요. 저희가 연락드리겠습니다."
-- 의존성이 복잡하게 꼬여 있는 상황을 의존성이 부패(dependency rot)이라고 한다.
+- 의존성이 복잡하게 꼬여 있는 상황을 **의존성이 부패(dependency rot)** 이라고 한다.
 - 할리우드 원칙을 사용하면, 저수준 구성 요소가 시스템에 접속할 수는 있지만 언제, 어떻게 그 구성 요소를 사용할지는 고수준 구성 요소가 결정한다.
+  
+![image](https://github.com/lizuAg/Head-First-Design-Patterns/assets/68546023/71f14460-59bc-468d-aaf5-672674627151)
+
